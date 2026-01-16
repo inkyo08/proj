@@ -12,7 +12,7 @@ if ($cxx.class == 'msvc')
   cxx.coptions += \
     /W4 /WX \
     /O2 /Oi /Ot /Oy /GL \
-    /fp:fast /GS- /Gw /Gy /GR- /EHs-c- \
+    /arch:AVX2 /fp:fast /GS- /Gw /Gy /GR- /EHs-c- \
     /MP /MT
 
   cxx.loptions += /LTCG /OPT:REF /OPT:ICF
