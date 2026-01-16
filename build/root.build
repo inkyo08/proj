@@ -7,7 +7,15 @@ cxx{*}: extension = cc
 
 if ($cxx.class == 'msvc')
 {
+  cxx.poptions += /DDEBUG /Isrc
 
+  cxx.coptions += \
+    /W4 /WX \
+    /O2 /Oi /Ot /Oy /GL \
+    /fp:fast /GS- /Gw /Gy /GR- /EHs-c- \
+    /MP /MT
+
+  cxx.loptions += /LTCG /OPT:REF /OPT:ICF
 }
 else
 {

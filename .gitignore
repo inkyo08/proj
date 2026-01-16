@@ -1,5 +1,10 @@
 *.o
+*.obj
 *.d
+*.pdb
+*.ilk
 compile_commands.json
 .cache/
 proj
+proj.exe
+*.manifest
