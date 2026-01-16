@@ -1,6 +1,6 @@
 config.version = 1
 
-if ($cxx.target.class == 'windows') 
+if ($build.host.class == 'windows')
   config.cxx = cl
 else
   config.cxx = clang++
