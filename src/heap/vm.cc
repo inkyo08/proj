@@ -46,7 +46,7 @@ namespace proj::heap::vm
   void unresv (void *ptr, size_t sz)
   {
     (void) sz;
-    if (!VirtualFree (ptr, 0, MEM_RELEASE)) abort ();
+    if (sz == 0 || !VirtualFree (ptr, 0, MEM_RELEASE)) abort ();
   }
   void map (void *ptr, size_t sz)
   {
