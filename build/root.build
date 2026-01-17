@@ -7,7 +7,7 @@ cxx{*}: extension = cc
 
 if ($cxx.class == 'msvc')
 {
-  cxx.poptions += /DDEBUG /Isrc
+  cxx.poptions += /DDEBUG "/I$src_root/src"
 
   cxx.coptions += \
     /W4 /WX \
@@ -19,7 +19,7 @@ if ($cxx.class == 'msvc')
 }
 else
 {
-  cxx.poptions += -DDEBUG -Isrc
+  cxx.poptions += -DDEBUG "-I$src_root/src"
 
   cxx.coptions += \
     -Wall -Wextra -Werror \
