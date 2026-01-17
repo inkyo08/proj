@@ -30,4 +30,32 @@ namespace proj::heap::vm
 } // namespace proj::heap::vm
 
 #elif _WIN32
+
+#define VC_EXTRALEAN
+#define WIN32_LEAN_AND_MEAN
+#include <Windows.h>
+
+namespace proj::heap::vm
+{
+  void *resv (size_t sz)
+  {
+    void *ptr = VirtualAlloc (NULL, sz, MEM_RESERVE, PAGE_NOACCESS);
+    if (!ptr) abort ();
+    return ptr;
+  }
+  void unresv (void *ptr, size_t sz)
+  {
+    (void) sz;
+    if (!VirtualFree (ptr, 0, MEM_RELEASE)) abort ();
+  }
+  void map (void *ptr, size_t sz)
+  {
+    if (sz == 0 || !VirtualAlloc (ptr, sz, MEM_COMMIT, PAGE_READWRITE)) abort ();
+  }
+  void unmap (void *ptr, size_t sz)
+  {
+    if (sz == 0 || !VirtualFree (ptr, sz, MEM_DECOMMIT)) abort ();
+  }
+} // namespace proj::heap::vm
+
 #endif
